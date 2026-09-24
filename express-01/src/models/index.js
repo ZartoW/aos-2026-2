@@ -4,6 +4,8 @@ import pg from "pg";
 import getUserModel from "./user.js";
 import getMessageModel from "./message.js";
 
+export { getMessageModel, getUserModel };
+
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
   dialectModule: pg,

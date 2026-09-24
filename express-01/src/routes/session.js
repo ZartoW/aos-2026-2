@@ -1,10 +1,8 @@
 import { Router } from "express";
+import { getSession } from "../Controllers/index.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const user = await req.context.models.User.findByPk(req.context.me.id);
-  return res.send(user);
-});
+router.get("/", getSession);
 
 export default router;
