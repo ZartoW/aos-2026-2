@@ -16,7 +16,6 @@ const app = express();
 
 app.set("trust proxy", 1);
 
-// middlewares
 app.use(helmet());
 app.use(corsMiddleware);
 app.use(limiterMiddleware);
@@ -25,18 +24,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logMiddleware);
 app.use(contextMiddleware);
 
-// rotas
 app.get("/", (req, res) => {
   return res.send("Servidor express executando...");
 });
 app.use("/session", routes.session);
 app.use("/users", routes.user);
 app.use("/messages", routes.message);
+app.use("/tarefas", routes.tarefa);
 
-// rota não encontrada (404)
 app.use(notFoundMiddleware);
 
-// middleware global de erro
 app.use(errorMiddleware);
 
 const port = process.env.PORT || 3000;

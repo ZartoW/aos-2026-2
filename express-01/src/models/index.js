@@ -1,3 +1,4 @@
+import getTarefaModel from "./tarefa.js";
 import Sequelize from "sequelize";
 import pg from "pg";
 
@@ -12,6 +13,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 const models = {
   User: getUserModel(sequelize, Sequelize),
   Message: getMessageModel(sequelize, Sequelize),
+  Tarefa: getTarefaModel(sequelize, Sequelize),
 };
 
 Object.keys(models).forEach((key) => {
